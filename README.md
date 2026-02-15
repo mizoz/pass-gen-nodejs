@@ -1,23 +1,31 @@
 # Password Generator Node.js
 
-A secure password generator CLI tool.
+[![npm Version](https://img.shields.io/npm/v/pass-gen-nodejs?style=flat-square)](https://www.npmjs.com/package/pass-gen-nodejs)
+[![npm Downloads](https://img.shields.io/npm/dm/pass-gen-nodejs?style=flat-square)](https://www.npmjs.com/package/pass-gen-nodejs)
+[![License](https://img.shields.io/npm/l/pass-gen-nodejs?style=flat-square)](LICENSE)
+[![Node Version](https://img.shields.io/node/v/pass-gen-nodejs?style=flat-square)](https://www.npmjs.com/package/pass-gen-nodejs)
+[![GitHub Stars](https://img.shields.io/github/stars/mizoz/pass-gen-nodejs?style=flat-square)](https://github.com/mizoz/pass-gen-nodejs)
+
+> A secure Node.js CLI tool for generating random passwords.
 
 ## Features
 
 - Generate secure random passwords
-- Customizable length
-- Include/exclude character types (uppercase, lowercase, numbers, symbols)
+- Customizable password length
+- Include/exclude character types
+- Special character support
 - Copy to clipboard
-- Password strength indicator
-- Generate multiple passwords at once
+- JavaScript/TypeScript API
 
 ## Installation
+
+### From npm
 
 ```bash
 npm install -g pass-gen-nodejs
 ```
 
-Or clone and install:
+### From Source
 
 ```bash
 git clone https://github.com/mizoz/pass-gen-nodejs.git
@@ -27,41 +35,66 @@ npm install
 
 ## Usage
 
+### Command Line
+
 ```bash
-# Generate default password (16 chars)
+# Generate a password
 pass-gen
 
-# Generate password with custom length
-pass-gen --length 24
+# Generate with custom length
+pass-gen --length 20
 
-# Include specific character types
-pass-gen --uppercase --lowercase --numbers --symbols
-
-# Exclude ambiguous characters
-pass-gen --no-ambiguous
+# Include special characters
+pass-gen --special
 
 # Generate multiple passwords
 pass-gen --count 5
-
-# Copy to clipboard
-pass-gen --copy
 ```
 
-## Options
+### JavaScript API
 
-- `-l, --length` - Password length (default: 16)
-- `-u, --uppercase` - Include uppercase letters
-- `-l, --lowercase` - Include lowercase letters
-- `-n, --numbers` - Include numbers
-- `-s, --symbols` - Include special symbols
-- `-a, --no-ambiguous` - Exclude ambiguous characters (0, O, l, 1)
-- `-c, --count` - Number of passwords to generate
-- `-C, --copy` - Copy to clipboard
+```javascript
+const { PasswordGenerator } = require("pass-gen-nodejs");
+
+const gen = new PasswordGenerator();
+
+// Generate password
+const password = gen.generate({
+  length: 16,
+  uppercase: true,
+  lowercase: true,
+  numbers: true,
+  special: true
+});
+
+console.log(password);
+```
+
+## CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `-l, --length` | Password length (default: 16) |
+| `-s, --special` | Include special characters |
+| `-c, --count` | Number of passwords to generate |
+
+## Requirements
+
+- Node.js 14+
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License
+This project is licensed under the MIT License.
 
 ## Author
 
-mizoz
+**mizoz**
+- GitHub: [@mizoz](https://github.com/mizoz)
+
+---
+
+⭐ If you find this project useful, please consider giving it a star on GitHub!
